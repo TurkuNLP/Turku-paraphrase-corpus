@@ -46,6 +46,8 @@ paraphrase regardless of context
 
 # Flags
 
+These flags are only given to the label 4 paraphrases and act as a qualifier to the paraphrase. Without the flag, these would drop to 3 or even 2.
+
 > `i`
 
 minor traceable difference (number, case, this vs that, etc.), treat as 2 for strict interpretation, treat as 4 for information retrieval etc
