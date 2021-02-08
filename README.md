@@ -54,11 +54,10 @@ minor traceable difference (number, case, this vs that, etc.), treat as 2 for st
 
 style/strength difference
 
-> "<"
-
+> <
 txt1 is more general than txt2; txt2 is more specific than txt1
 
-> ">"
+> >
 
 txt2 is more general than txt1; txt1 is more specific than txt2
 
