@@ -4,8 +4,14 @@
 
 # File format
 
-`txt1` and `txt2`: the paraphrase as extracted from text
-`rewrites`: a list of (rew1,rew2) pairs, the rewrite(s) produced for this paraphrase during the annotation
+> `txt1` and `txt2`
+
+The paraphrase as extracted from the original document
+
+> `rewrites`
+
+a list of (rew1,rew2) pairs, the rewrite(s) produced for this paraphrase during the annotation
+
 `label`: main label + additional flags
 `goeswith`: identification of the document from which the paraphrase was extracted, all paraphrases from one document are in one fold
 `fold`: 0-99, data split to 100 parts, respecting document boundaries
