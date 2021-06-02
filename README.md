@@ -1,5 +1,11 @@
 # Turku-paraphrase-corpus
 
+*The team*
+
+Jenna Kanerva, Filip Ginter, Li-Hsin Chang, Iiro Rastas, Valtteri Skantsi, Jemina Kilpeläinen, Hanna-Mari Kupari, Aurora Piirto, Jenna Saarni, Maija Sevón, and Otto Tarkka
+
+*Reference*
+
 Jenna Kanerva, Filip Ginter, Li-Hsin Chang, Iiro Rastas, Valtteri Skantsi, Jemina Kilpeläinen, Hanna-Mari Kupari, Jenna Saarni, Maija Sevón, and Otto Tarkka. 2021. Finnish Paraphrase Corpus. Proceedings of NoDaLiDa'21. (to appear)
 
 # File format
