@@ -8,6 +8,14 @@ Jenna Kanerva, Filip Ginter, Li-Hsin Chang, Iiro Rastas, Valtteri Skantsi, Jemin
 
 Jenna Kanerva, Filip Ginter, Li-Hsin Chang, Iiro Rastas, Valtteri Skantsi, Jemina Kilpeläinen, Hanna-Mari Kupari, Jenna Saarni, Maija Sevón, and Otto Tarkka. 2021. Finnish Paraphrase Corpus. Proceedings of NoDaLiDa'21. (to appear)
 
+# Files
+
+`train,dev,test.json`
+: The manually annotated primary data of the corpus
+
+`opus-parsebank-sample-annotated.tsv`
+: A sample of sentence pairs from OPUS and the Turku Internet Parsebank, with manual annotation. The sentence pair candidates are selected using the FinBERT model, i.e. all of them have a high BERT similarity. The sampling is stratified w.r.t. lexical similarity, i.e. lexical similarities in terms of character n-gram overlap are equally represented.
+
 # File format
 
 Each of the corpus data files is a `JSON` -formatted file, containing a list of data items. Additionally, to avoid repetition and excessive data file sizes, the texts of the documents are published in a single `JSON` -formatted file and referred to from the paraphrase data files. Each data item is a dictionary with the following keys:
