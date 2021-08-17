@@ -1,14 +1,22 @@
 # Turku-paraphrase-corpus
 
+Fully manually annotated paraphrase corpus containing 100,000+ paraphrase pairs harvested from alternative subtitles, news headings, news articles, student translations, and essays. The vast majority of the data is classified as a paraphrase either in the given context, or universally. A distinctive feature of the corpus is that the paraphrase pairs are provided together with their document context. The corpus is primarily in Finnish, with a small Swedish test set allowing small-scale transfer evaluations.
+
 *The team*
 
 Jenna Kanerva, Filip Ginter, Li-Hsin Chang, Iiro Rastas, Valtteri Skantsi, Jemina Kilpeläinen, Hanna-Mari Kupari, Aurora Piirto, Jenna Saarni, Maija Sevón, and Otto Tarkka
 
 *Reference*
 
-Jenna Kanerva, Filip Ginter, Li-Hsin Chang, Iiro Rastas, Valtteri Skantsi, Jemina Kilpeläinen, Hanna-Mari Kupari, Jenna Saarni, Maija Sevón, and Otto Tarkka. 2021. Finnish Paraphrase Corpus. Proceedings of NoDaLiDa'21. (to appear)
+Jenna Kanerva, Filip Ginter, Li-Hsin Chang, Iiro Rastas, Valtteri Skantsi, Jemina Kilpeläinen, Hanna-Mari Kupari, Jenna Saarni, Maija Sevón, and Otto Tarkka. 2021. Finnish Paraphrase Corpus. Proceedings of the 23rd Nordic Conference on Computational Linguistics (NoDaLiDa 2021)
 
-# Files
+*Acknowledgement*
+
+The Turku paraphrase corpus project was supported by the European Language Grid project through its open call for pilot projects. The European Language Grid project has received funding from the European Union’s Horizon 2020 Research and Innovation programme under Grant Agreement no. 825627 (ELG).
+
+We thank Jörg Tiedemann for his assistance with the data and acknowledge [Open Subtitles](https://www.opensubtitles.org/) for generously donating their data. We also thank Sampo Pyysalo for many fruitful discussions.
+
+# Files in the data distribution
 
 `train,dev,test.json`
 : The manually annotated primary data of the corpus
@@ -58,5 +66,3 @@ The following flags are applied as needed to label 4 paraphrases
 
 `>`
 : txt2 is more general than txt1; txt1 is more specific than txt2; treat as label 3 for strict interpretation
-
-
