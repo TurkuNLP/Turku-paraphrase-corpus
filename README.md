@@ -1,6 +1,6 @@
 # Turku-paraphrase-corpus
 
-Fully manually annotated paraphrase corpus containing 100,000+ paraphrase pairs harvested from alternative subtitles, news headings, news articles, student translations, and essays. The vast majority of the data is classified as a paraphrase either in the given context, or universally. A distinctive feature of the corpus is that the paraphrase pairs are provided together with their document context. The corpus is primarily in Finnish, with a small Swedish test set allowing small-scale transfer evaluations.
+Fully manually annotated paraphrase corpus containing 100,000+ paraphrase pairs harvested from alternative subtitles, news headings, news articles, discussion forum messages, student translations, and essays. The vast majority of the data is classified as a paraphrase either in the given context, or universally. A distinctive feature of the corpus is that the paraphrase pairs are provided together with their document context. The corpus is primarily in Finnish, with a small Swedish test set allowing small-scale transfer evaluations.
 
 *The team*
 
