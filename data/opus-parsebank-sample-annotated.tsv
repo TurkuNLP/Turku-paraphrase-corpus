@@ -1,4 +1,4 @@
-label	source	similarity	txt1	txt2
+label	source	lex-similarity	txt1	txt2
 1	pb	0.0359184856957932	AALBERG esittel käsitteen SPLIT.	TLC on MSCHICin uutuus.
 3	pb	0.910390338299258	Aallon etenemissuunta Seisova gravitaatioaalto Seuraavassa kuvassa kappale, jonka halkaisija on L emittoi gravitaatioaaltoa oikealle ja vasemmalle.	Aallon etenemissuunta Seuraavassa kuvassa kappale, jonka halkaisija on L/2 emittoi neutraalia grvitaatioaaltoa oikealle ja vasemmalle.
 1	pb	0.0224224264665437	Aalto BIZ Prof.	Silva Mysterium Oy.

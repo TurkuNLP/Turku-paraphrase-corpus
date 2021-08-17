@@ -16,6 +16,10 @@ The Turku paraphrase corpus project was supported by the European Language Grid 
 
 We thank Jörg Tiedemann for his assistance with the data and acknowledge [Open Subtitles](https://www.opensubtitles.org/) for generously donating their data. We also thank Sampo Pyysalo for many fruitful discussions.
 
+# Project website
+
+[https://turkunlp.org/paraphrase.html](https://turkunlp.org/paraphrase.html)
+
 # Files in the data distribution
 
 `train,dev,test.json`
