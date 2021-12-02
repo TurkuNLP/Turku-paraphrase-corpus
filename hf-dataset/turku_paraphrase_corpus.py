@@ -74,9 +74,10 @@ class TurkuParaphraseCorpus(datasets.GeneratorBasedBuilder):
     # data = datasets.load_dataset('my_dataset', 'first_domain')
     # data = datasets.load_dataset('my_dataset', 'second_domain')
     BUILDER_CONFIGS = [
-        datasets.BuilderConfig(name="plain", version=VERSION, description="This loads the dataset in its plain format without any additional data transformations. In case of applying the dataset to a task (e.g. paraphrase classification or generation), some additional data transformations are suggested depending on the task (see 'classification' and 'generation' for ready made transformations for paraphrase classification and paraphrase generation)."),
+        datasets.BuilderConfig(name="plain", version=VERSION, description="This loads the dataset in its plain format without any additional data transformations. In case of applying the dataset to a task (e.g. paraphrase classification or generation), some additional data transformations are suggested depending on the task (see 'classification', 'classification-context', 'plain-context'  and 'generation' for ready made transformations for paraphrase classification and paraphrase generation)."),
+        datasets.BuilderConfig(name="plain-context", version=VERSION, description="This loads the dataset in its plain format without any additional data transformations. In case of applying the dataset to a task (e.g. paraphrase classification or generation), some additional data transformations are suggested depending on the task (see 'classification', 'classification-context', 'plain' and 'generation' for ready made transformations for paraphrase classification and paraphrase generation). Unlike 'plain', this dataset  includes the document contexts, which eats memory, but otherwise it is the same as 'plain'. This is useful for context-based modelling."),
         datasets.BuilderConfig(name="classification", version=VERSION, description="This loads the dataset in a format directly suitable for paraphrase classification. Each example is introduced twice with different order of the text passages, (text1, text2, label) and (text2, text1, label)"),
-        datasets.BuilderConfig(name="classification-nocontext", version=VERSION, description="This loads the dataset in a format directly suitable for paraphrase classification. Each example is introduced twice with different order of the text passages, (text1, text2, label) and (text2, text1, label). Unlike 'classification' this dataset does not include the document contexts, which might save a bit of memory and make nicer printouts, but otherwise it is the same as 'classification'"),
+        datasets.BuilderConfig(name="classification-context", version=VERSION, description="This loads the dataset in a format directly suitable for paraphrase classification. Each example is introduced twice with different order of the text passages, (text1, text2, label) and (text2, text1, label). Unlike 'classification' this dataset includes the document contexts, which eats memory but otherwise it is the same as 'classification'. This is useful for context-based modelling."),
         datasets.BuilderConfig(name="generation", version=VERSION, description="This loads the dataset in a format suitable for paraphrase generation, where examples not considered suitable for generation models are discarded. Paraphrases without directionality are generated in both directions, while directional paraphrases (subsumption flag) are only generated from more detailed to more general one. Labels 2 (related but not a paraphrase), 3 (context dependent paraphrase), flag i (minor deviation), and flag s (style difference) are discarded."),
     ]
 
@@ -87,6 +88,7 @@ class TurkuParaphraseCorpus(datasets.GeneratorBasedBuilder):
         if self.config.name == "generation":  # This is the name of the configuration selected in BUILDER_CONFIGS above
             features = datasets.Features(
                 {
+                    "id": datasets.Value("string"),
                     "gem_id": datasets.Value("string"),
                     "goeswith": datasets.Value("string"),
                     "fold": datasets.Value("int32"),
@@ -97,9 +99,10 @@ class TurkuParaphraseCorpus(datasets.GeneratorBasedBuilder):
                     "is_rewrite": datasets.Value("bool"),
                 }
             )
-        elif self.config.name == "classification-nocontext":
+        elif self.config.name in ("classification","plain"):
             features = datasets.Features(
                 {
+                    "id": datasets.Value("string"),
                     "gem_id": datasets.Value("string"),
                     "goeswith": datasets.Value("string"),
                     "fold": datasets.Value("int32"),
@@ -110,9 +113,10 @@ class TurkuParaphraseCorpus(datasets.GeneratorBasedBuilder):
                     "is_rewrite": datasets.Value("bool"),
                 }
             )
-        else:# same format for classification/original
+        elif self.config.name in ("classification-context","plain-context"):# same format for classification/original
             features = datasets.Features(
                 {
+                    "id": datasets.Value("string"),
                     "gem_id": datasets.Value("string"),
                     "goeswith": datasets.Value("string"),
                     "fold": datasets.Value("int32"),
@@ -158,7 +162,7 @@ class TurkuParaphraseCorpus(datasets.GeneratorBasedBuilder):
         # This method handles input defined in _split_generators to yield (key, example) tuples from the dataset.
         # The `key` is here for legacy reason (tfds) and is not important in itself.
 
-        if doctexts and self.config.name not in ("generation","classification-nocontext"): #we dont want to read this in for configs which do not need the contexts
+        if doctexts and self.config.name in ("classification-context","plain-context"): #we dont want to read this in for configs which do not need the contexts
             with open(doctexts, "rt", encoding="utf-8") as f:
                 doctexts_dict=json.load(f)
         else:
@@ -173,15 +177,16 @@ class TurkuParaphraseCorpus(datasets.GeneratorBasedBuilder):
                     ctx={}
                 d1=ctx.get("doc1")
                 d2=ctx.get("doc2")
-                if self.config.name not in ("generation","classification-nocontext"):
-                    example["context1"]={"doctext":doctexts_dict.get(d1,""),"start":0,"end":0}
-                    example["context2"]={"doctext":doctexts_dict.get(d2,""),"start":0,"end":0}
+                if self.config.name in ("classification-context","plain-context"): #these two configs take the context
+                    example["context1"]={"doctext":doctexts_dict.get(d1,""),"start":ctx.get("beg1",0),"end":ctx.get("end1",0)}
+                    example["context2"]={"doctext":doctexts_dict.get(d2,""),"start":ctx.get("beg2",0),"end":ctx.get("end2",0)}
                 if self.config.name == "generation":
                     examples = self._prepare_for_generation(example)
                 else:
                     examples = self._prepare_plain_and_classification(example)
                 for e in examples:
                     e["gem_id"] = f"gem-turku_paraphrase_corpus-{split}-{counter}" # fill in gem_id
+                    e["id"]=f"turku_paraphrase_corpus-{split}-{counter}" # fill in gem_id
                     yield counter, e
                     counter += 1
                     
