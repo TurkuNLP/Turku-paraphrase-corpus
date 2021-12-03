@@ -49,9 +49,10 @@ _LICENSE = "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 
 # The HuggingFace dataset library don't host the datasets but only point to the original files
 # This can be an arbitrary nested dict/list of URLs (see below in `_split_generators` method)
 _URLs = {
-    'train': 'https://raw.githubusercontent.com/TurkuNLP/Turku-paraphrase-corpus/raw/ver-1.1.0/data-fi/train.json',
-    'validation': 'https://raw.githubusercontent.com/TurkuNLP/Turku-paraphrase-corpus/raw/ver-1.1.0/data-fi/dev.json',
-    'test': 'https://raw.githubusercontent.com/TurkuNLP/Turku-paraphrase-corpus/raw/ver-1.1.0/test.json',
+  
+    'train': 'https://github.com/TurkuNLP/Turku-paraphrase-corpus/raw/ver-1.1.0/data-fi/train.json',
+    'validation': 'https://github.com/TurkuNLP/Turku-paraphrase-corpus/raw/ver-1.1.0/data-fi/dev.json',
+    'test': 'https://github.com/TurkuNLP/Turku-paraphrase-corpus/raw/ver-1.1.0/data-fi/test.json',
     'doctexts': 'https://github.com/TurkuNLP/Turku-paraphrase-corpus/raw/ver-1.1.0/data-fi/texts.json.gz'
 }
 
