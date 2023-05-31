@@ -12,7 +12,7 @@ Jenna Kanerva, Filip Ginter, Li-Hsin Chang, Iiro Rastas, Valtteri Skantsi, Jemin
 
 *Acknowledgement*
 
-The Turku paraphrase corpus project was supported by the European Language Grid project through its open call for pilot projects. The European Language Grid project has received funding from the European Union’s Horizon 2020 Research and Innovation programme under Grant Agreement no. 825627 (ELG).
+The Turku paraphrase corpus project was supported by the European Language Grid project through its open call for pilot projects. The European Language Grid project has received funding from the European Union’s Horizon 2020 Research and Innovation programme under Grant Agreement no. 825627 (ELG). Further funding was provided by the Academy of Finland.
 
 We thank Jörg Tiedemann for his assistance with the data and acknowledge [Open Subtitles](https://www.opensubtitles.org/) for generously donating their data. We also thank Sampo Pyysalo for many fruitful discussions.
 
